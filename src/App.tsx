@@ -1,39 +1,32 @@
 import { useEffect, useState } from 'react'
 import { createPet, deletePetByID, getAllPets, getPetByID } from './api/pets'
-import { PetCardComponent } from './components/PetCardComponent'
 import { useAtom } from 'jotai'
-import { allPetsAtom } from './atoms/pets'
+import { initPetsAtom } from './atoms/pets'
+import { PetSlider } from './components/PetSlider'
+import { Header } from './components/Header'
+import "./style/css/Index.css";
+import { Footer } from './components/Footer'
+import { Route, Routes } from 'react-router-dom'
+import { AddPetForm, PetList } from './components/PetList'
+import { About } from './components/About'
 
 function App() {
-  const [pets] = useAtom(allPetsAtom)
+  const [, initPets] = useAtom(initPetsAtom)
 
   useEffect(()=>{
-    
-    pets.map(pet=>{
-      console.log(pet)
-    })
-    // getAllPets().then(res=>{console.log(res)})
+    initPets()
+  }, [initPets])
 
-
-    createPet({name:"pet3", breed:"breed", imgUrl:"https://images.dog.ceo/breeds/sharpei/noel.jpg"}).then(res=>{
-      console.log(res)
-    })
-
-    // getPetByID("3").then(petRes=>{
-    //   console.log(petRes)
-    // })
-  })
-
-  return (
-    <>
-    {
-      pets.map(pet=>{
-      return <PetCardComponent key={pet.id} name={pet.name} breed={pet.breed}/>
-    })
-    }
-    </>
-    
-  )
+  return <>
+    <Header/>
+    <Routes>
+      <Route path="/" element={<PetSlider />} />
+      <Route path="/list" element={<PetList />} />
+      <Route path='/list/add' element={<AddPetForm/>}/>
+      <Route path="/about" element={<About />} />
+    </Routes>
+    <Footer/>
+  </>
 }
 
 export default App

@@ -1,0 +1,147 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* full viewport height */
+    justify-content: space-between;
+}
+
+header{
+    padding: 2rem 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header #logo{
+    font-size: 2.2rem;
+}
+
+header nav a{
+    margin-left: 2rem;
+    font-size: 1.7rem;
+}
+
+footer{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+}
+.pet-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* spacing between slides */
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  perspective: 1000px; /* adds depth for 3D effects */
+}
+
+.pet-slide {
+  flex: 0 0 auto;
+  transition: all 0.4s ease;
+  opacity: 0.6;
+  transform: scale(0.8);
+}
+
+#pet-card img, .pet-slide.prev img, .pet-slide.next img {
+  width: 350px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#pet-card .pet-card-info{
+    margin-left: 3rem;
+    margin-right: 3rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Focused active image */
+.pet-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.pet-slide.active img {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Previous + Next positions */
+.pet-slide.prev {
+  transform: translateX(-40px) scale(0.85);
+}
+
+.pet-slide.next {
+  transform: translateX(40px) scale(0.85);
+}
+
+.pet-table-wrapper {
+  overflow-x: auto;
+  padding: 0 7rem;
+}
+
+.pet-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.pet-table th,
+.pet-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+}
+
+
+.pet-table th {
+  background-color: coral;
+  color: black;
+}
+
+.pet-table tr:hover {
+  background-color: #f3f4f6;
+}
+
+
+.pet-img {
+  /* width: 100px;s */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.delete-btn, .update-btn {
+  padding: 6px 12px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.update-btn{
+    background-color: orange;
+    margin-left: 1rem;
+}
+
+.delete-btn:hover {
+  background-color: #dc2626;
+}
